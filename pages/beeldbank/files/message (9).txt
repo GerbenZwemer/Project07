@@ -1,0 +1,52 @@
+<?php
+class Chat extends Dab{
+    public function getMessage($clientid){
+        $idclient = array($clientid);
+        $query = "SELECT * FROM berichten WHERE client_BSN = ?";
+        $message = $this->execute($query, $idclient);
+        foreach ($message as $msg) {
+            echo "<div class='incoming_msg'>
+                    <div class='received_msg'>
+                        <div class='received_withd_msg'>
+                            <p>". $msg['bericht'] ."</p>
+                            <span class='time_date'> 11:01 AM    |    Yesterday</span>
+                        </div>
+                    </div>
+                </div>";
+        }
+    }
+
+    public function sendMessage($chat, $clientbsn){
+        $query = "SELECT * FROM client WHERE BSN = ?";
+        $username = $this->execute($query, $clientbsn);
+
+        foreach ($username as $user){
+            $msg = array($chat, $clientbsn, $user['gebruiker_gebruikersnaam']);
+            $query = "INSERT INTO berichten(bericht, client_BSN, ontvanger) VALUES (?,?,?)";
+            $execute = $this->execute($query, $msg);
+        }
+    }
+
+    public function getClient(){
+        $query = "SELECT DISTINCT client_BSN FROM berichten";
+        $client = $this->getAll($query);
+        $i = 1;
+
+        foreach ($client as $clienten) {
+            $clientarray = array($clienten['client_BSN']);
+            $query = "SELECT * FROM client WHERE BSN = ?";
+            $client = $this->execute($query, $clientarray);
+
+            foreach ($client as $name) {
+                echo "<div class='chat_list'>
+                        <div class='chat_people'>
+                            <div class='chat_ib'>
+                                <button id='{$i}' value='{$name['BSN']}' onclick='buttonclick(\"#{$i}\")'> {$name['voornaam']} {$name['tussenvoegsel']} {$name['achternaam']} <span class='chat_date'></span></button>
+                            </div>
+                        </div>
+                    </div>";
+                    $i++; 
+            }
+        }
+    }
+}

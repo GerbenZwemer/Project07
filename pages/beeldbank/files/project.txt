@@ -1,0 +1,7 @@
+mail verkeer: mail met logo
+slogan van het bedrijf
+communicatie -> informatie naar de klant
+Scrum:
+  + wat is er te doen
+  + wat heb je gedaan
+  + waar ben je mee bezig

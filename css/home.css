@@ -1,0 +1,507 @@
+*{
+	box-sizing: border-box;
+}
+
+body{
+	padding: 0;
+	margin: 0;
+    background:linear-gradient(rgba(120, 222, 147, 0.2), rgba(120, 222, 147, 0.2)), url(../img/daylight-environment-forest-idyllic-459225.jpg);
+	background-size: 100%;
+}
+
+#header{
+	background: #ededed;
+	padding: 15px 30px;
+	display: flex;
+	align-items: center;
+}
+
+#toggle{
+	display: none;
+}
+
+#header{
+	position: relative;
+	left: 0;
+	transition: 0.3s all;
+}
+
+#content{
+	position: relative;
+	left: 0;
+	transition: 0.3s all;
+	padding: 30px;
+}
+
+#menu{
+	position: fixed;
+	left: -240px;
+	top: 0;
+	bottom: 0;
+	width: 240px;
+	background-color:#56BC86;
+	transition: 0.3s left;
+}
+
+#menu ul{
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+
+#menu > ul > li > a{
+	text-decoration: none;
+	display: block;
+	padding: 15px 20px;
+	color: white;
+}
+
+#menu > ul > li > a:hover{
+	color: rgb(33, 83, 56);
+	background-color: #258055;
+}
+
+#toggle:checked~#content{
+	left: 240px;
+}
+
+#toggle:checked~#header{
+	left: 240px;
+}
+
+#toggle:checked~#header,
+#toggle:checked~#content{
+	width: calc(100% - 240px);
+}
+
+#toggle:checked~#menu{
+	left: 0;
+}
+
+label[for=toggle]{
+	cursor: pointer;
+	display: flex;
+	height: 22px;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+label[for=toggle] span{
+	display: block;
+	height: 4px;
+	width: 30px;
+	border-radius: 2px;
+	background-color: #6C6C6C;
+}
+
+.formWrapper{
+	margin: 0 auto;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	height: 100%;
+	text-align: center;
+	background-color: rgba(86, 188, 134, 0.5);
+	padding: 20px;
+	width: 600px;
+	border-radius: 10px;
+}
+
+input[type=text],[type=password]{
+	border: none;
+    margin-bottom: 5px;
+    padding: 8px;
+    width: 230px;
+    text-align: center;
+}
+input[type=submit]{
+	background-color: #56BC86;
+    border: none;
+    border-radius: 20px;
+    padding: 10px;
+    color: white;
+    width: 230px;
+}
+#toevoegen{
+	background-color: #56BC86;
+    border: none;
+    border-radius: 20px;
+	padding: 10px;
+	margin-top: 20px !important;
+    color: white;
+    width: 230px;
+}
+select{
+	padding: 8px;
+	width: 230px;
+	border: none;
+    padding: 10px;
+    color: black;
+	width: 230px;
+	text-align-last:center;
+}
+
+#voornaam, #achternaam{
+	margin-top: 20px;
+}
+a{
+	padding: 20px;
+	margin: 0 auto;
+	color: black;
+	font-weight: 600;
+	font-size: 20px;
+}
+a:hover{
+	text-decoration: none;
+	color: #56BC86;
+	margin: 0 auto;
+	color: black;
+	font-weight: 600;
+	font-size: 20px;
+}
+.tableWrapper{
+	margin: 0 auto;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	height: 100%;
+	text-align: center;
+	background-color: rgba(86, 188, 134, 0.5);
+	border-radius: 10px;
+}
+
+table {
+	color: white;
+	border: 1px solid #ccc;
+	border-collapse: collapse;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	border-radius: 50px;
+	table-layout: fixed;
+  }
+  table input{
+	width: 160px !important;
+  }
+  table input[type=submit]{
+	margin-bottom: 5px;
+  }
+  
+  table caption {
+	font-size: 1.5em;
+	margin: .5em 0 .75em;
+  }
+  
+  table tr {
+	border: 1px solid #ddd;
+	padding: .35em;
+  }
+  
+  table th,
+  table td {
+	padding: .625em;
+	text-align: center;
+  }
+  
+  table th {
+	font-size: .85em;
+	letter-spacing: .1em;
+	text-transform: uppercase;
+  }
+  .formWrapper select{
+	  margin-bottom: 10px;
+  }
+  .bed{
+	  margin-left: 12px !important;
+  }
+  .kamer{
+	margin-right: 9px !important;
+}
+
+  @media screen and (max-width: 600px) {
+	table {
+	  border: 0;
+	}
+  
+	table caption {
+	  font-size: 1.3em;
+	}
+	
+	table thead {
+	  border: none;
+	  clip: rect(0 0 0 0);
+	  height: 1px;
+	  margin: -1px;
+	  overflow: hidden;
+	  padding: 0;
+	  position: absolute;
+	  width: 1px;
+	}
+	
+	table tr {
+	  border-bottom: 3px solid #ddd;
+	  display: block;
+	  margin-bottom: .625em;
+	}
+	
+	table td {
+	  border-bottom: 1px solid #ddd;
+	  display: block;
+	  font-size: .8em;
+	  text-align: right;
+	}
+	
+	table td::before {
+	  /*
+	  * aria-label has no advantage, it won't be read inside a table
+	  content: attr(aria-label);
+	  */
+	  content: attr(data-label);
+	  float: left;
+	  font-weight: bold;
+	  text-transform: uppercase;
+	}
+	
+	table td:last-child {
+	  border-bottom: 0;
+	}
+  }
+  form .rechten{
+	  color: white;
+  }
+  .logo{
+	  width: 80px;
+	  position: relative;
+	  left: 80%;
+  }
+
+  /*CHAT*/
+  .container{max-width:1170px; margin:auto;}
+  img{ max-width:100%;}
+  .inbox_people {
+	background: #f8f8f8 none repeat scroll 0 0;
+	float: left;
+	overflow: hidden;
+	width: 40%; border-right:1px solid #c4c4c4;
+  }
+  .inbox_msg {
+	border: 1px solid #c4c4c4;
+	clear: both;
+	overflow: hidden;
+  }
+  .top_spac{ margin: 20px 0 0;}
+  
+  
+  .recent_heading {float: left; width:40%;}
+  .srch_bar {
+	display: inline-block;
+	text-align: right;
+	width: 60%;
+  }
+  .headind_srch{ padding:10px 29px 10px 20px; overflow:hidden; border-bottom:1px solid #c4c4c4;}
+  
+  .recent_heading h4 {
+	color: #05728f;
+	font-size: 21px;
+	margin: auto;
+  }
+  .srch_bar input{ border:1px solid #cdcdcd; border-width:0 0 1px 0; width:80%; padding:2px 0 4px 6px; background:none;}
+  .srch_bar .input-group-addon button {
+	background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+	border: medium none;
+	padding: 0;
+	color: #707070;
+	font-size: 18px;
+  }
+  .srch_bar .input-group-addon { margin: 0 0 0 -27px;}
+  
+  .chat_ib h5{ font-size:15px; color:#464646; margin:0 0 8px 0;}
+  .chat_ib h5 span{ font-size:13px; float:right;}
+  .chat_ib p{ font-size:14px; color:#989898; margin:auto}
+  .chat_img {
+	float: left;
+	width: 11%;
+  }
+  .chat_ib {
+	float: left;
+	padding: 0 0 0 15px;
+	width: 88%;
+  }
+  
+  .chat_people{ overflow:hidden; clear:both;}
+  .chat_list {
+	border-bottom: 1px solid #c4c4c4;
+	margin: 0;
+	padding: 18px 16px 10px;
+  }
+  .inbox_chat { height: 550px; overflow-y: scroll;}
+  
+  .active_chat{ background:#ebebeb;}
+  
+  .incoming_msg_img {
+	display: inline-block;
+	width: 6%;
+  }
+  .received_msg {
+	display: inline-block;
+	padding: 0 0 0 10px;
+	vertical-align: top;
+	width: 92%;
+   }
+   .received_withd_msg p {
+	background: #ebebeb none repeat scroll 0 0;
+	border-radius: 3px;
+	color: #646464;
+	font-size: 14px;
+	margin: 0;
+	padding: 5px 10px 5px 12px;
+	width: 100%;
+  }
+  .outgoing_msg_img {
+	display: inline-block;
+	width: 6%;
+  }
+  .send_msg {
+	display: inline-block;
+	padding: 0 0 0 10px;
+	vertical-align: top;
+	width: 92%;
+   }
+   .send_withd_msg p {
+	border-radius: 3px;
+	color: #646464;
+	font-size: 14px;
+	margin: 0;
+	padding: 5px 10px 5px 12px;
+	width: 100%;
+  }
+
+  .time_date {
+	color: #747474;
+	display: block;
+	font-size: 12px;
+	margin: 8px 0 0;
+  }
+  .received_withd_msg { width: 57%; float: right;}
+  .mesgs {
+	  float: left;
+	  padding: 30px 15px 0 25px;
+	  width: 60%;
+	  background-color: #fff;
+  }
+  
+   .sent_msg p {
+	background: #05728f none repeat scroll 0 0;
+	border-radius: 3px;
+	font-size: 14px;
+	margin: 0; color:#fff;
+	padding: 5px 10px 5px 12px;
+	width:100%;
+  }
+ 
+  .input_msg_write input {
+	background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+	border: medium none;
+	color: #4c4c4c;
+	font-size: 15px;
+	min-height: 48px;
+	width: 100%;
+  }
+  
+  form.input_msg_write {
+	  margin-bottom: 0;
+  }
+  
+  .type_msg {border-top: 1px solid #c4c4c4;position: relative;}
+  .msg_send_btn {
+	background: #05728f none repeat scroll 0 0;
+	border: medium none;
+	border-radius: 50%;
+	color: #fff;
+	cursor: pointer;
+	font-size: 17px;
+	height: 33px;
+	position: absolute;
+	right: 0;
+	top: 11px;
+	width: 33px;
+  }
+  .messaging { padding: 0 0 50px 0;}
+  .msg_history {
+	height: 516px;
+	overflow-y: auto;
+  }
+.button{
+	border: none;
+	background-color: rgba(0,0,0,.0);
+	color: black;
+}
+.button:active{
+	border: none;
+	background-color: rgba(0,0,0,.0);
+	color: black;
+}
+.button:focus{
+	border: none;
+	background-color: rgba(0,0,0,.0);
+	color: black;
+}
+.buttonlink{
+	font-size: 20px;
+}
+.formCliënt{
+	margin-top: 5%;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	padding: 0 50px;
+	height: 100%;
+	text-align: center;
+}
+.formCliënt input[type=submit]{
+	margin-top: 10px;
+}
+.cliëntenkaart{
+	width: 200px;
+	height: 200px;
+	background-color: rgba(86, 188, 134, 0.5);
+	margin-left: 50px;
+	margin-top: 20px;
+}
+.foto{
+	font-size: 100px;
+	margin-left: 40px;
+	margin-top: 10px;
+}
+.link{
+	margin-top: 20px;
+	margin-left: 85px;
+}
+.cliëntNaam{
+	margin-left: 15px;
+}
+.delete{
+	padding-left: 20px;
+	font-weight: 600px;
+	font-size: 20px;
+}
+.buttons{
+	width: 10px;
+}
+.button-chat{
+	width: 100%;
+	height: 40px;
+	border-radius: 0%;
+	border: 1px solid grey;
+}
+
+.medischeInfo{
+	border: none;
+	position:fixed;
+	padding: 5px;
+	margin-top: -8px;
+	margin-left: -630px;
+	background-color: transparent !important;
+	font-size: 40px;
+	color: #05728f;
+}
